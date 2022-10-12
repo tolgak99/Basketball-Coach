@@ -25,27 +25,26 @@ public class BasketStackController : MonoBehaviour
                 return;
             }
 
-            switch (basketCapacity % 4)
+
+            if (basketCapacity % 4 == 0)
             {
-                case 0:
-                    CreateBall(0);
-                    basketCapacity++;
-                    break;
-                case 1:
-                    CreateBall(1);
-                    basketCapacity++;
-                    break;
-                case 2:
-                    CreateBall(2);
-                    basketCapacity++;
-                    break;
-                case 3:
-                    CreateBall(3);
-                    basketCapacity++;
-                    break;
-                default:
-                    Debug.LogError("Wrong Basket Capacity");
-                    break;
+                CreateBall(0);
+                basketCapacity++;
+            }
+            else if (basketCapacity % 4 == 1)
+            {
+                CreateBall(1);
+                basketCapacity++;
+            }
+            else if (basketCapacity % 4 == 2)
+            {
+                CreateBall(2);
+                basketCapacity++;
+            }
+            else if (basketCapacity % 4 == 3)
+            {
+                CreateBall(3);
+                basketCapacity++;
             }
         }
     }
@@ -73,15 +72,6 @@ public class BasketStackController : MonoBehaviour
         obj.GetComponent<MeshCollider>().isTrigger = true;
         Destroy(obj.GetComponent<BallController>());
         ballList.Add(obj);
-
-        if (obj != null)
-        {
-            obj.SetActive(true);
-        }
-        else
-        {
-            Debug.LogError("Problem at creatingPrefab !");
-        }
     }
 
 }
